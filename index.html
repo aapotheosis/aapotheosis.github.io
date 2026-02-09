@@ -1,0 +1,462 @@
+<!-- run python -m http.server 3000 to start server -->
+<!-- http://Localhost:3000 to address server -->
+<!-- to stop server, press Ctrl+C -->
+<!-- Or use netstat -ano | findstr : 3000 to find the string to kill (i.e. 10500) -->
+<!-- Once you have value run taskkill /F /PID 10500 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRSP Loan Maximizer | Canadian Tax Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family-Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-pattern"></div>
+
+    <!-- Help FAB (Floating Action Button) -->
+    <button class="help-fab" id="help-fab" aria-label="Open help panel" title="Need help?">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+    </button>
+
+    <!-- Help Panel (Slide-out) -->
+    <aside class="help-panel" id="help-panel" aria-hidden="true">
+        <div class="help-panel-header">
+            <h2>Help Center</h2>
+            <button class="help-panel-close" id="help-panel-close" aria-label="Close help panel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <div class="help-panel-content">
+            <!-- FAQ Item 1: What is this for? -->
+             <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </span>
+                    <span class="faq-title">What is this calculator for ?</span>
+                    <span class="faq-chevron">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>The RRSP Loan Maximizer helps you calculate the <strong>optimal loan amount</strong> to borrow for your RRSP contribution. It uses a mathematical strategy where your tax refund is used to pay back the loan.</p>
+                    <p>This is sometimes called the "gross-up" or "refund loan" strategy, popular among financially savvy Canadians looking to maximize their retirement contributions .</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2: What does it accomplish? -->
+             <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </span>
+                    <span class="faq-title">What does it accomplish ?</span>
+                    <span class="faq-chevron">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>This calculator accomplishes three key goals:</p>
+                    <ul>
+                        <li><strong>Maximizes your RRSP contribution</strong> - By borrowing against your expected tax refund, you can contribute significantly more</li>
+                        <li><strong>Calculates your exact tax refund</strong> - Using current Canadian federal and provincial tax brackets</li>
+                        <li><strong>Shows your true out-of-pocket cost</strong> - So you know exactly what you're committing to financially</li>
+                    </ul>
+                    <p>The result? A larger retirement nest egg with the same initial cash outlay</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3: Why do I need it? -->
+             <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                        </svg>
+                    </span>
+                    <span class="faq-title">Why do I need it ?</span>
+                    <span class="faq-chevron">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>If you're <strong>financially responsible</strong> and want to optimize your retirement savings, this strategy can help you:</p>
+                    <ul>
+                        <li><strong>Use contribution room efficiently</strong> - Don't let valuable RRSP room go unused</li>
+                        <li><strong>Lower your taxable income</strong> - Potentially drop into a lower tax bracket</li>
+                        <li><strong>Accelerate retirement savings</strong> - The power of compound growth means contributing more now pays dividends later</li>
+                        <li><strong>Make tax-efficient decisions</strong> - Understanding your marginal tax rate helps you plan smarter</li>
+                    </ul>
+                    <p>This calculator removes the guesswork and shows you exactly how much to borrow for maximum benefit</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4: How to use? -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="13" x2="15" y2="13"/>
+                            <line x1="9" y1="17" x2="11" y2="17"/>
+                        </svg>
+                    </span>
+                    <span class="faq-title">How do I use this calculator ?</span>
+                    <span class="faq-chevron">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Follow these simple steps:</p>
+                    <ol>
+                        <li><strong>Select your tax year</strong> - Choose the year you're filing for</li>
+                        <li><strong>Choose your province</strong> - Tax rates vary by province</li>
+                        <li><strong>Enter your annual income</strong> - Your total taxable income before RRSP deductions</li>
+                        <li><strong>Enter your contribution room</strong> - Found on your CRA Notice of Assessment</li>
+                        <li><strong>Enter your planned contribution</strong> - The amount you can contribute without borrowing</li>
+                        <li><strong>(Optional) Add loan details</strong> - Interest rate and term to see the true cost of borrowing</li>
+                        <li><strong>Click "Calculate"</strong> - View your optimal loan amount and strategy</li>
+                    </ol>
+                    <p class="faq-tip"><strong>Tip:</strong> Your marginal tax rate updates in real time as you enter your income and province!</p>
+                </div>
+            </div>
+            
+            <!-- Additional Help -->
+            <div class="help-extra">
+                <h3>Still have questions ?</h3>
+                <p>This calculator provides estimates based on current tax brackets. For personalized advice, consult a qualified tax professional or financial advisor .</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Help Panel Overlay-->
+    <div class="help-overlay" id="help-overlay"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-badge">Canadian Tax Strategy Tool</div>
+            <h1 class="hero-title">Maximize Your RRSP Contribution</h1>
+            <p class="hero-subtitle">Use the tax refund loan strategy to contribute more to your retirement-let your tax refund pay back the loan .</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span>Accurate tax brackets</span>
+                </div>
+                <div class="hero-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span>All provinces & territories</span>
+                </div>
+                <div class="hero-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span>Interest cost analysis</span>
+                </div>
+            </div>
+            <a href="#calculator-form" class="hero-cta">
+                <span>Calculate My Optimal Loan</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <polyline points="19 12 12 19 5 12"/>
+                </svg>
+            </a>
+        </section>
+
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h1>RRSP Loan Maximizer</h1>
+            </div>
+            <p class="tagline">Optimize your RRSP contribution using the tax refund loan strategy</p>
+        </header>
+
+        <main>
+            <form id="calculator-form">
+                <section class="form-section">
+                    <h2>
+                        <span class="section-number">01</span>
+                        Location & Income
+                    </h2>
+
+                    <div class="form-grid form-grid-3">
+                        <div class="form-group">
+                            <label for="tax-year">Tax Year</label>
+                            <select id="tax-year" required>
+                                <!--Populated by JavaScript -->
+                            </select>
+                            <span class="hint">Select the tax year for calculations</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="province">Province/Territory</label>
+                                <select id="province" required>
+                                <option value="">Select your province</option>
+                                <option value="AB">Alberta</option>
+                                <option value="BC">British Columbia</option>
+                                <option value="MB">Manitoba</option>
+                                <option value="NB">New Brunswick</option>
+                                <option value="NL">Newfoundland and Labrador</option>
+                                <option value="NS">Nova Scotia</option>
+                                <option value="NT">Northwest Territories</option>
+                                <option value="NU">Nunavut</option>
+                                <option value="ON">Ontario</option>
+                                <option value="PE">Prince Edward Island</option>
+                                <option value="QC">Quebec</option>
+                                <option value="SK">Saskatchewan</option>
+                                <option value="YT">Yukon</option>\
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="annual-income">Annual Income</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="annual-income" placeholder="85000" min="0" step="0.01" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tax-bracket-display" id="tax-bracket-display">
+                        <div class="bracket-info">
+                            <span class="bracket-label">Your Marginal Tax Rate</span>
+                            <span class="bracket-value" id="current-bracket"> -</span>
+                        </div>
+                        <div class="bracket-breakdown" id="bracket-breakdown">
+                            <span class="federal">Federal: <strong id="federal-rate"></strong></span>
+                            <span class="provincial">Provincial: <strong id="provincial-rate"></strong></span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>
+                        <span class="section-number">02</span>
+                        RRSP Details
+                    </h2>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="contribution-room">Available Contribution Room</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix"></span>
+                                <input type="number" id="contribution-room" placeholder="100000" min="0" step="0.01" required>
+                            </div>
+                            <span class="hint">Found on your CRA Notice of Assessment</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="current-contribution">Your Current Contribution</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="current-contribution" placeholder="10000" min="0" step="0.01" required>
+                            </div>
+                            <span class="hint">Amount you can contribute without a loan</span>
+                        </div>
+                    </div>
+                </section>
+                    
+                <section class="form-section">
+                    <h2>
+                        <span class="section-number">03</span>
+                        <span class="not-required">Loan Interest Details</span>
+                        <span class="optional-badge">Optional</span>
+                    </h2>
+
+                    <div class="form-grid form-grid-3">
+                        <div class="form-group">
+                            <label for="interest-rate">Annual Interest Rate</label>
+                            <div class="input-with-suffix">
+                                <input type="number" id="interest-rate" placeholder="6.5" min="0" max="100" step="0.01">
+                                <span class="suffix">%</span>
+                            </div>
+                            <span class="hint">Leave empty to skip interest calculation</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loan-term">Loan Term</label>
+                            <div class ="input-with-select">
+                                <input type="number" id="loan-term" placeholder="90" min="1" step="1">
+                                <select id="loan-term-unit">
+                                    <option value="days">Days</option>
+                                    <option value="months">Months</option>
+                                    <option value="years">Years</option>
+                                </select>
+                            </div>
+                            <span class="hint">Time until loan is fully paid off</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="compounding">Compounding Frequency</label>
+                            <select id="compounding">
+                                <option value="daily">Daily (365/year)</option>
+                                <option value="monthly" selected>Monthly (12/year)</option>
+                                <option value="annually">Annually (1/year)</option>
+                            </select>
+                            <span class="hint">How often interest is calculated</span>
+                        </div>
+                    </div>
+                </section>
+
+                <button type="submit" class="calculate-btn">
+                    <span>Calculate Optimal Strategy</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7-7 7" />
+                    </svg>
+                </button>
+            </form>
+
+            <section class="results-section" id="results-section">
+                <h2>
+                    <span class="section-number">04</span>
+                    Your Optimal Strategy
+                </h2>
+
+                <div class="results-grid">
+                    <div class="result-card primary">
+                        <div class="result-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="6" width="20" height="14" rx="2"/>
+                                <path d="M2 10h20"/>
+                            </svg>
+                        </div>
+                        <div class="result-content">
+                            <span class="result-label">Loan Amount to Take</span>
+                            <span class="result-value" id="loan-amount">$0</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                            </svg> 
+                        </div>
+                        <div class="result-content">
+                            <span class="result-label">Total RRSP Contribution</span>
+                            <span class="result-value" id="total-contribution">$0</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <div class="result-content">
+                            <span class="result-label">Tax Refund</span>
+                            <span class="result-value" id="tax-refund">$0</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v614 2"/>
+                            </svg>
+                        </div>
+                        <div class="result-content">
+                            <span class="result-label">Out of Pocket After Refund</span>
+                            <span class="result-value" id="out-of-pocket">$0</span>
+                        </div>
+                    </div>
+                </div>  
+
+                <!-- Loan Interest Section (shown only when interest rate is provided) -->
+                <div class="interest-breakdown hidden" id="interest-breakdown">
+                    <h3>Loan Interest Breakdown</h3>
+                    <div class="interest-grid">
+                        <div class="interest-item">
+                            <span class="interest-label">Interest Rate</span>
+                            <span class="interest-value" id="result-interest-rate">-</span>
+                        </div>
+                        <div class="interest-item">
+                            <span class="interest-label">Loan Term</span>
+                            <span class="interest-value" id="result-loan-term">-</span>
+                        </div>
+                        <div class="interest-item">
+                            <span class="interest-label">Compounding</span>
+                            <span class="interest-value" id="result-compounding"></span>
+                        </div>
+                        <div class="interest-item highlight">
+                            <span class="interest-label">Total Interest Paid</span>
+                            <span class="interest-value" id="result-interest-paid">$0</span>
+                        </div>
+                        <div class="interest-item">
+                            <span class="interest-label">Total Loan Repayment</span>
+                            <span class="interest-value" id="result-total-repayment">$0</span>
+                        </div>
+                        <div class="interest-item">
+                            <span class="interest-label">Net Benefit (Refund - Interest)</span>
+                            <span class="interest-value" id="result-net-benefit">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculation-breakdown" id="calculation-breakdown">
+                    <h3>Calculation Breakdown</h3>
+                    <div class="breakdown-content" id="breakdown-content">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="tax-impact" id="tax-impact">
+                    <h3>Tax Bracket Impact</h3>
+                    <div class="tax-impact-content" id="tax-impact-content">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>>This calculator provides estimates only. Consult a tax professional for personalized advice.</p>
+            <p class="copyright">Tax brackets based on Canadian federal and provincial rates.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>      
+</body>
+</html>

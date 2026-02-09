@@ -1,0 +1,6 @@
+# RRSP Loan Maxinizer - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Canadian tax bracket data
+# Used by generate tax brackets.py to fetch
+canatax>=0.1.0
