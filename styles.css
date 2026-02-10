@@ -1125,7 +1125,7 @@ footer p {
     Help Panel (Slide-out)
     =================================== */
 
-help-overlay {
+.help-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
@@ -1157,7 +1157,7 @@ help-overlay {
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
 }
 
-help-panel.open {
+.help-panel.open {
     right: 0;
 }
 
@@ -1224,7 +1224,7 @@ help-panel.open {
     border-color: var(--color-primary-dim);
 }
 
-.faq-questions {
+.faq-question {
     width: 100%;
     display: flex;
     align-items: center;
@@ -1263,7 +1263,7 @@ help-panel.open {
     font-family: var(--font-primary);
     font-size: 0.95rem;
     font-weight: 500;
-    color: var(--color-text)
+    color: var(--color-text);
 }
 
 .faq-chevron {
